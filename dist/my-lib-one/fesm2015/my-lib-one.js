@@ -1,4 +1,4 @@
-import { ɵɵdefineInjectable, ɵsetClassMetadata, Injectable, ɵɵdefineComponent, ɵɵelementStart, ɵɵtext, ɵɵelementEnd, Component, ɵɵdefineNgModule, ɵɵdefineInjector, ɵɵsetNgModuleScope, NgModule } from '@angular/core';
+import { ɵɵdefineInjectable, ɵsetClassMetadata, Injectable, ɵɵdefineComponent, ɵɵelementStart, ɵɵtext, ɵɵelementEnd, ɵɵadvance, ɵɵtextInterpolate1, Component, ɵɵdefineNgModule, ɵɵdefineInjector, ɵɵsetNgModuleScope, NgModule } from '@angular/core';
 
 class MyLibOneService {
     constructor() { }
@@ -13,15 +13,20 @@ MyLibOneService.ɵprov = ɵɵdefineInjectable({ token: MyLibOneService, factory:
     }], function () { return []; }, null); })();
 
 class MyLibOneComponent {
-    constructor() { }
+    constructor() {
+        this.myVariable = 'Hello this is a library';
+    }
     ngOnInit() {
     }
 }
 MyLibOneComponent.ɵfac = function MyLibOneComponent_Factory(t) { return new (t || MyLibOneComponent)(); };
-MyLibOneComponent.ɵcmp = ɵɵdefineComponent({ type: MyLibOneComponent, selectors: [["lib-my-lib-one"]], decls: 2, vars: 0, template: function MyLibOneComponent_Template(rf, ctx) { if (rf & 1) {
+MyLibOneComponent.ɵcmp = ɵɵdefineComponent({ type: MyLibOneComponent, selectors: [["lib-my-lib-one"]], decls: 2, vars: 1, template: function MyLibOneComponent_Template(rf, ctx) { if (rf & 1) {
         ɵɵelementStart(0, "p");
-        ɵɵtext(1, " my-lib-one works! ");
+        ɵɵtext(1);
         ɵɵelementEnd();
+    } if (rf & 2) {
+        ɵɵadvance(1);
+        ɵɵtextInterpolate1(" my-lib-one works! ", ctx.myVariable, " ");
     } }, encapsulation: 2 });
 /*@__PURE__*/ (function () { ɵsetClassMetadata(MyLibOneComponent, [{
         type: Component,
@@ -29,7 +34,9 @@ MyLibOneComponent.ɵcmp = ɵɵdefineComponent({ type: MyLibOneComponent, selecto
                 selector: 'lib-my-lib-one',
                 template: `
     <p>
-      my-lib-one works!
+      my-lib-one works! 
+
+      {{myVariable}}
     </p>
   `,
                 styles: []

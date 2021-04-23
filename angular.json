@@ -42,6 +42,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "my-lib-one"
+    }
+  },
+  "defaultProject": "my-lib-one",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -20,14 +20,18 @@
 
     var MyLibOneComponent = /** @class */ (function () {
         function MyLibOneComponent() {
+            this.myVariable = 'Hello this is a library';
         }
         MyLibOneComponent.prototype.ngOnInit = function () {
         };
         MyLibOneComponent.ɵfac = function MyLibOneComponent_Factory(t) { return new (t || MyLibOneComponent)(); };
-        MyLibOneComponent.ɵcmp = core.ɵɵdefineComponent({ type: MyLibOneComponent, selectors: [["lib-my-lib-one"]], decls: 2, vars: 0, template: function MyLibOneComponent_Template(rf, ctx) { if (rf & 1) {
+        MyLibOneComponent.ɵcmp = core.ɵɵdefineComponent({ type: MyLibOneComponent, selectors: [["lib-my-lib-one"]], decls: 2, vars: 1, template: function MyLibOneComponent_Template(rf, ctx) { if (rf & 1) {
                 core.ɵɵelementStart(0, "p");
-                core.ɵɵtext(1, " my-lib-one works! ");
+                core.ɵɵtext(1);
                 core.ɵɵelementEnd();
+            } if (rf & 2) {
+                core.ɵɵadvance(1);
+                core.ɵɵtextInterpolate1(" my-lib-one works! ", ctx.myVariable, " ");
             } }, encapsulation: 2 });
         return MyLibOneComponent;
     }());
@@ -35,7 +39,7 @@
             type: core.Component,
             args: [{
                     selector: 'lib-my-lib-one',
-                    template: "\n    <p>\n      my-lib-one works!\n    </p>\n  ",
+                    template: "\n    <p>\n      my-lib-one works! \n\n      {{myVariable}}\n    </p>\n  ",
                     styles: []
                 }]
         }], function () { return []; }, null); })();

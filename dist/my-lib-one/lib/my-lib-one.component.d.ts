@@ -1,6 +1,7 @@
 import { OnInit } from '@angular/core';
 import * as i0 from "@angular/core";
 export declare class MyLibOneComponent implements OnInit {
+    myVariable: String;
     constructor();
     ngOnInit(): void;
     static ɵfac: i0.ɵɵFactoryDef<MyLibOneComponent, never>;
